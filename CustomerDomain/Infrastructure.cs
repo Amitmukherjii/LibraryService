@@ -11,7 +11,7 @@ namespace CustomerDomain
         {
             Customer customer1 = new Customer
             {
-                Customer_Name = "",
+                Customer_Name = "Amit",
                 Customer_Borrowed_Books = 1,
                 Customer_Number = 123,
                 Customer_Address = "abc",

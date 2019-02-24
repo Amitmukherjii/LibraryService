@@ -12,14 +12,14 @@ namespace BooksDomain
         {
             BookDetails book1 = new BookDetails
             {
-                BookID=1,
-                Book_Name = "",
-                Book_Description = "Book Name 1",
-                Book_Price = 123,
-                Image_Name = 1,
+                id=1,
+                name = "The Midnight Line",
+                description = "Book Name 1",
+                price = 123,
+                picture = 1,
                 AddedOn = DateTime.Today,
                 AddedBy = 1,
-                Author="abc"
+                author= "Child Lee"
             };
 
             bookList.Add(book1);

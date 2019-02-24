@@ -6,13 +6,13 @@ namespace BooksDomain
 {
     public class BookDetails
     {
-        public int BookID { get; set; }
-        public string Book_Name { get; set; }
-        public int Book_Price { get; set; }
-        public int Image_Name { get; set; }
-        public string Book_Description { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public int price { get; set; }
+        public int picture { get; set; }
+        public string description { get; set; }
         public DateTime AddedOn { get; set; }
         public int AddedBy { get; set; }
-        public string Author { get; set; }
+        public string author { get; set; }
     }
 }
