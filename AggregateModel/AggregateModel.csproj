@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="LoadCustomerModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BooksDomain\BooksDomain.csproj" />
+    <ProjectReference Include="..\CustomerDomain\CustomerDomain.csproj" />
+    <ProjectReference Include="..\StaffDomain\StaffDomain.csproj" />
+  </ItemGroup>
+
 </Project>

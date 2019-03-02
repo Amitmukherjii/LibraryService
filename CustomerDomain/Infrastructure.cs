@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CustomerDomain
 {
-    public class Infrastructure
+    public class Infrastructure : ICustomerInfrastructure
     {
-        IList<Customer> custList = new List<Customer>();
-       
-        public IList<Customer> GetCustomer()
+        public IEnumerable<Customer> GetCustomer()
         {
-            Customer customer1 = new Customer
+            using (var context = new dbContext_Customer())
             {
-                Customer_Name = "Amit",
-                Customer_Borrowed_Books = 1,
-                Customer_Number = 123,
-                Customer_Address = "abc",
-                AddedOn = DateTime.Today
-            };
+                return context.Customers.ToList();
+            }
+        }
 
-            custList.Add(customer1);
-
-            return custList;
+        public Customer GetCustomer(int customerId)
+        {
+            using (var context = new dbContext_Customer())
+            {
+                return context.Customers.Where(c => c.ID == customerId).AsQueryable().FirstOrDefault();
+            }
         }
     }
 }

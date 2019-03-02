@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"dbContext_Book","DefaultDacpacSchema":null,"IdReplace":true,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"BooksDomain","SelectedToBeGenerated":0,"Tables":[{"HasPrimaryKey":true,"Name":"dbo.BookDetails"}],"UseDatabaseNames":false,"UseFluentApiOnly":false,"UseHandleBars":false,"UseInflector":true}

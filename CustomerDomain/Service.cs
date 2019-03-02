@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CustomerDomain
 {
-    public class Service
+    public class Service : ICustomerService
     {
-        Infrastructure infrastructure = new Infrastructure();
-        public IList<Customer> GetCustomer()
+        private ICustomerInfrastructure _customerInfrastructure;
+        public Service(ICustomerInfrastructure customerInfrastructure)
         {
-            return infrastructure.GetCustomer();
+            _customerInfrastructure = customerInfrastructure;
+        }
+        public IEnumerable<Customer> GetCustomer()
+        {
+            return _customerInfrastructure.GetCustomer();
+        }
+
+        public Customer GetCustomer(int customerId)
+        {
+            return _customerInfrastructure.GetCustomer(customerId);
         }
     }
 }

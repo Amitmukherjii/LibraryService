@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CustomerDomain
 {
-    public class Customer
+    public partial class Customer
     {
-        public int CustomerID { get; set; }
-        public string Customer_Name { get; set; }
-        public int Customer_Borrowed_Books { get; set; }
-        public int Customer_Number { get; set; }
-        public string Customer_Address { get; set; }
+        public int ID { get; set; }
+        public int? CustomerBorrowedBooks { get; set; }
+        public string CustomerName { get; set; }
+        public int CustomerNumber { get; set; }
+        public string CustomerAddress { get; set; }
         public DateTime AddedOn { get; set; }
     }
 }

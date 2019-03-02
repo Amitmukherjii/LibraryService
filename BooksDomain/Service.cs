@@ -4,12 +4,22 @@ using System.Text;
 
 namespace BooksDomain
 {
-    public class Service
+    public class Service : IBookService
     {
-        Infrastructure infrastructure = new Infrastructure();
-        public IList<BookDetails> GetBooks()
+        private IBooksInfrastructure _booksInfrastructure;
+        public Service(IBooksInfrastructure booksInfrastructure)
         {
-           return infrastructure.GetBooks();
+            _booksInfrastructure = booksInfrastructure;
+        }
+        
+        public IEnumerable<BookDetail> GetBooks()
+        {
+            return _booksInfrastructure.GetBooks();
+        }
+
+        public BookDetail GetBooks(int? BookId)
+        {
+            return _booksInfrastructure.GetBooks(BookId);
         }
     }
 }

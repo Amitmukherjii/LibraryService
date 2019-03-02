@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AggregateModel;
+using BooksDomain;
+using CustomerDomain;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +31,12 @@ namespace LibraryService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddScoped<ICustomerService, CustomerDomain.Service>();
+            services.AddScoped<IBookService, BooksDomain.Service>();
+            services.AddScoped<ICustomerInfrastructure, CustomerDomain.Infrastructure>();
+            services.AddScoped<IBooksInfrastructure, BooksDomain.Infrastructure>();
+            services.AddScoped<ICustomerAggregate, LoadCustomerDetailsAggregate>();
+            services.AddScoped<IBookAggregate, LoadBooksDetailsAggregate>();
             services.AddCors();
             services.AddAuthentication(auth =>
             {

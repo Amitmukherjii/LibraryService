@@ -1,25 +1,44 @@
-﻿using System;
+﻿
+using System.Collections.Generic;
+using BooksDomain;
+using CustomerDomain;
 
 namespace AggregateModel
 {
-    public class LoadCustomerDetailsAggregate
+    public class LoadCustomerDetailsAggregate : ICustomerAggregate
     {
-        
-        public LoadCustomerEvent LoadCustomerDetails(int customerId)
+        private ICustomerService _customerService;
+        private IBookService _bookService;
+        public LoadCustomerDetailsAggregate(ICustomerService customerService, IBookService bookService)
         {
-            LoadCustomerEvent loadEvent = new LoadCustomerEvent
+            _customerService = customerService;
+            _bookService = bookService;
+        }
+
+        public IEnumerable<UIModel> LoadAllDetails()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public UIModel LoadDetailsById(int id)
+        {
+            var customer = _customerService.GetCustomer(id);
+            var book = _bookService.GetBooks(customer.CustomerBorrowedBooks);
+
+
+            UIModel loadEvent = new UIModel
             {
-                id = 1,
-                Name = "Amit",
-                Price = 123,
-                Author = "Test",
-                Description = "test",
+                id = book.BookID,
+                Name = book.BookName,
+                Price = book.BookPrice,
+                Author = book.AddedBy,
+                Description = book.BookDescription,
                 Picture = 1,
                 genres ="Fiction",
-                CustomerID = 1,
-                Customer_Name = "Amit",
-                Customer_Borrowed_Books = 1,
-                Customer_Address = "",
+                CustomerID = customer.ID,
+                Customer_Name = customer.CustomerName,
+                Customer_Borrowed_Books = customer.CustomerBorrowedBooks,
+                Customer_Address = customer.CustomerAddress,
             };
             return loadEvent;
         }
