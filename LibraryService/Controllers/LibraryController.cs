@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AggregateModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryService.Controllers
 {
@@ -39,5 +40,6 @@ namespace LibraryService.Controllers
         {
             return _bookAggregate.LoadDetailsById(bookId);
         }
+
     }
 }
